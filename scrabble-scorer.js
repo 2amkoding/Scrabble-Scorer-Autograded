@@ -35,19 +35,33 @@ function oldScrabbleScorer(word) {
 
 function initialPrompt() {
    //let isValid = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "R", "X", "Y", "Z", " "]
-   // let empty = [];
-   for (key in newPointStructure){  
-     empty.push(key);
-     console.log(key)
-   }
+   //  let empty = [];
+   // for (key in newPointStructure){  
+   //   empty.push(key);
+   // try a method that pushes a copy of without mutating original object
+   // }
    
    let prompt = input.question("Let's play some scrabble! Enter a word: ");
    prompt = formatStr(prompt);
-     
-   // while(!empty.includes(prompt)){
-   //     prompt = input.question(`Word must be [a-z] or " ": `);
-   //     prompt = formatStr(prompt);
-   //     }
+//    let validStr = [];
+//   for(let i = 0; i < prompt.length; i++) {
+  
+//    for(key in newPointStructure) {
+//       if (key.toUpperCase().includes(prompt[i])) {
+//          validStr.push(prompt[i])
+//       }
+//       console.log(prompt)
+//       if (validStr.length === prompt.length){
+//          return prompt
+//       } else {
+//          prompt = input.question("error try again: ")
+//       }
+      
+//    }
+   // console.log(validStr)
+   // console.log(prompt)
+  //}
+   
    return prompt
 }
 
@@ -98,18 +112,18 @@ let scrabble = {
 
  function scrabbleScorer(word) {
   let total = 0;
-  
+  word = formatStr(word);
   for(let i=0; i<word.length; i++){
     for(key in newPointStructure) {
       if(key.toUpperCase().includes(word[i])){
-        console.log(`Points for '${word[i]}': ${Number(newPointStructure[key])}`)
+        console.log(`Points for '${word[i]}': ${(newPointStructure[key])}`)
         total+= Number(newPointStructure[key])
       }
     }
   }
+
   console.log( `'${word}', total points: ${total}!`)
   return total
- 
 }
 
 
